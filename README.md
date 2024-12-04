@@ -13,5 +13,6 @@ This web-based application allows for a reader/user to log the book that they ar
 **So that** I can modify them when necessary
 
 ## Bad Interface
-![Bad Interface Picture] (![image](https://github.com/user-attachments/assets/7f17439b-ac35-4e7b-8d9b-f0d30d4963eb)
+(![image](https://github.com/user-attachments/assets/99b6cd8d-6ffc-4938-a1e2-53dad25d82f6)
 )
+
