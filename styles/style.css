@@ -8,7 +8,6 @@ body{
   }
   
   footer {
-    background-color: #000000;
     position: static;
   }
   
@@ -16,6 +15,7 @@ body{
     display: none;
     max-width: 600px;
     margin: 0 auto;
+    background-color: #ffffff;
 
     
   }
