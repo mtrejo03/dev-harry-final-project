@@ -1,5 +1,5 @@
 body{
-    background-color: #D2B48C;
+    background-color: #FFE4C4;
   }
   
   .form-container {
@@ -9,7 +9,6 @@ body{
   
   footer {
     position: static;
-    background-color: #F4A460;
   }
   
   #outputCard {
