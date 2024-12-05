@@ -30,12 +30,12 @@ $(() => {
 
 
     if (!bookData.readerName || !bookData.title || !bookData.rating || !bookData.onlineSource || !bookData.dateRead) {
-      alert("Please fill in all required fields, including Date Read.");
+
       return;
     }
 
     if (bookData.onlineSource === "yes" && !bookData.platform) {
-      alert("Please specify the online platform.");
+
       return;
     }
 
