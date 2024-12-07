@@ -1,17 +1,15 @@
 $(() => {
   console.log("ready!");
+ const defaultBookData = {
+    readerName: "Milly Trejo",
+    title: "The Great Gatsby",
+    dateRead: "2024-01-01",
+    genre: ["Fiction", "Romance"],
+    rating: "4",
+    onlineSource: "yes",
+    platform: "Instagram",
+    review: "no review"
 
-  let previousBookData = null; 
-
-  $("input[name='bookSource']").on("change", function () {
-    const selectedValue = $("input[name='bookSource']:checked").val();
-    if (selectedValue === "yes") {
-      $("#chooseSource").show(); 
-    } else {
-      $("#chooseSource").hide(); 
-      $("#platform").val(""); 
-    }
-  });
 
   $("#formSubmit").on("click", function (e) {
     e.preventDefault(); 
@@ -35,7 +33,7 @@ $(() => {
       return;
     }
 
-    previousBookData = { ...bookData }; 
+
 
     $("#outputBox").html(`
       <p><strong>Reader Name:</strong> ${bookData.readerName}</p>
@@ -56,34 +54,24 @@ $(() => {
   });
 
   $("#loadPrevious").on("click", function () {
-    if (!previousBookData) {
-      return;
-    }
+    const previousBookData = defaultBookData;
 
-    
     $("#name").val(previousBookData.readerName);
     $("#title").val(previousBookData.title);
     $("#dateRead").val(previousBookData.dateRead);
 
-    
     $("input[type='checkbox'][id^='genre']").each(function () {
       $(this).prop("checked", previousBookData.genre.includes($(this).val()));
     });
 
-    
     $(`input[name='bookRating'][value='${previousBookData.rating}']`).prop("checked", true);
-
-    
     $(`input[name='bookSource'][value='${previousBookData.onlineSource}']`).prop("checked", true).trigger("change");
-
-    
     $("#platform").val(previousBookData.platform);
-
-    
     $("#usertext").val(previousBookData.review);
+
+    $("#chooseSource").show(); 
   });
 
   $("#chooseSource").hide();
   $("#outputCard").hide();
 });
-
