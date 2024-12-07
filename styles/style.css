@@ -9,6 +9,7 @@ body {
   
   footer {
     position: static;
+    color: #000000;
   }
   
   #outputCard {
