@@ -2,6 +2,7 @@ $(() => {
   console.log("ready!");
 
   let previousBookData = null; 
+
   $("input[name='bookSource']").on("change", function () {
     const selectedValue = $("input[name='bookSource']:checked").val();
     if (selectedValue === "yes") {
@@ -12,11 +13,9 @@ $(() => {
     }
   });
 
-
   $("#formSubmit").on("click", function (e) {
     e.preventDefault(); 
 
-  
     const bookData = {
       readerName: $("#name").val(),
       title: $("#title").val(),
@@ -28,17 +27,13 @@ $(() => {
       review: $("#usertext").val(),
     };
 
-
     if (!bookData.readerName || !bookData.title || !bookData.rating || !bookData.onlineSource || !bookData.dateRead) {
-
       return;
     }
 
     if (bookData.onlineSource === "yes" && !bookData.platform) {
-
       return;
     }
-
 
     previousBookData = { ...bookData }; 
 
@@ -55,37 +50,40 @@ $(() => {
     `);
 
     $("#outputCard").show();
-
-
     console.log("Submitted Book Data:", bookData);
-
 
     $("#chooseSource").hide(); 
   });
 
   $("#loadPrevious").on("click", function () {
     if (!previousBookData) {
-     
       return;
     }
 
-    $("#outputBox").html(`
-      <p><strong>Reader Name:</strong> ${previousBookData.readerName}</p>
-      <p><strong>Book Title:</strong> ${previousBookData.title}</p>
-      <p><strong>Date Read:</strong> ${previousBookData.dateRead}</p>
-      <p><strong>Genre:</strong> ${previousBookData.genre.length > 0 ? previousBookData.genre.join(", ") : "None"}</p>
-      <p><strong>Rating:</strong> ${previousBookData.rating || "Not Rated"}</p>
-      <p><strong>Found Online:</strong> ${previousBookData.onlineSource || "No Answer"}</p>
-      <p><strong>Platform:</strong> ${previousBookData.platform || "N/A"}</p>
-      <p><strong>Review:</strong></p>
-      <p>${previousBookData.review || "No Review"}</p>
-    `);
+    
+    $("#name").val(previousBookData.readerName);
+    $("#title").val(previousBookData.title);
+    $("#dateRead").val(previousBookData.dateRead);
 
+    
+    $("input[type='checkbox'][id^='genre']").each(function () {
+      $(this).prop("checked", previousBookData.genre.includes($(this).val()));
+    });
 
-    $("#outputCard").show();
+    
+    $(`input[name='bookRating'][value='${previousBookData.rating}']`).prop("checked", true);
+
+    
+    $(`input[name='bookSource'][value='${previousBookData.onlineSource}']`).prop("checked", true).trigger("change");
+
+    
+    $("#platform").val(previousBookData.platform);
+
+    
+    $("#usertext").val(previousBookData.review);
   });
-
 
   $("#chooseSource").hide();
   $("#outputCard").hide();
 });
+
