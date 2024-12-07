@@ -1,10 +1,10 @@
 $(() => {
   console.log("ready!");
 
-  // Ensure #chooseSource is initially hidden
+
   $("#chooseSource").hide();
 
-  // Listen for changes to the bookSource radio buttons
+  
   $("input[name='bookSource']").on("change", function () {
     const selectedValue = $("input[name='bookSource']:checked").val(); 
     console.log("Selected Value:", selectedValue); 
