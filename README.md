@@ -1,6 +1,6 @@
 # Book Tracker 📚
 
-This web-based application allows for a reader/user to log the book that they are currently reading by filling out a simple form asking for basic information about the book. It also allows for future modification of a logged book. 
+This web-based application allows for a reader/user to log the book that they are currently reading by filling out a simple form asking for basic information about the book. It also allows for future modification of a previously submitted book. 
 
 ## Notable features: 
 - Customizable Options: reader name, book title, genre, rating, platform, review
